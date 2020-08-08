@@ -4,7 +4,9 @@ import { Appearance } from "./init/Appearance";
 import EventHandler from "./Events/EventHandler";
 import { CommandHandler } from "./structures/CommandHandler";
 
-require("dot-env").config();
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 // Base Variables
 const client = new Discord.Client();

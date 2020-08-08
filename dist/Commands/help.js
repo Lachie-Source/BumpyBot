@@ -84,13 +84,9 @@ module.exports = {
             const checkcmd = client.commands
                 .filter((cmd) => !cmd.permissions.includes("DEV"))
                 .map((cmd) => cmd.name)
-                .indexOf(args[0]) ||
-                client.commands
-                    .filter((cmd) => !cmd.permissions.includes("DEV"))
-                    .map((cmd) => cmd.aliases)
-                    .indexOf(args[0]);
+                .indexOf(args[0]);
             if (checkcmd === -1) {
-                message.channel.send(new UserErrorEmbed_1.UserErrorEmbed(`Unknown Command (Or Aliase) "${args[0]}"`));
+                message.channel.send(new UserErrorEmbed_1.UserErrorEmbed(`Unknown Command "${args[0]}"`));
                 return;
             }
             embeds.setPage(checkcmd + 1);

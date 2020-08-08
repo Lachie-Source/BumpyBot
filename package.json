@@ -20,7 +20,7 @@
   "dependencies": {
     "bot-utils": "^1.4.2",
     "discord.js": "^12.2.0",
-    "dot-env": "0.0.1",
+    "dotenv": "^8.2.0",
     "hastebin": "^0.2.1",
     "ts-node": "^8.10.2"
   },
