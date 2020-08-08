@@ -9,12 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const discord_js_1 = require("discord.js");
-const MultiPageEmbed_1 = require("../structures/MultiPageEmbed");
+const MultiPageEmbed_1 = require("../structures/Embeds/MultiPageEmbed");
 const titleCases_1 = require("../functions/titleCases");
 module.exports = {
     name: "help",
     aliases: ["commands"],
     permissions: [],
+    description: "Displays All The Commands",
+    type: "Utility",
     execute(message, args, client) {
         var index = -1;
         const embeds = new MultiPageEmbed_1.MultiPageEmbed(client.commands
@@ -44,17 +46,21 @@ module.exports = {
                     inline: true,
                 },
                 {
+                    name: "> Type",
+                    value: titleCases_1.toTitleCase(cmd.type),
+                    inline: true,
+                },
+                {
                     name: "> Required Permissions",
                     value: cmd.permissions.toString().length != 0
                         ? cmd.permissions
-                            .map((command) => command
-                            .split("_")
-                            .forEach((cmd) => {
-                            return titleCases_1.toTitleCase(cmd);
-                        })
-                            .join(" "))
+                            .map((command) => titleCases_1.toTitleCase(command))
                             .join(", ")
                         : "None",
+                },
+                {
+                    name: "> Description",
+                    value: cmd.description,
                 },
             ]);
         }));

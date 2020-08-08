@@ -1,12 +1,13 @@
 import Discord from "discord.js";
 import { MessageEmbed } from "discord.js";
 import { uptime } from "bot-utils";
-import { loadavg } from "os";
 
 export = {
   name: "ping",
   aliases: ["status"],
   permissions: [],
+  description: "Get The Client's Uptime And Latency",
+  type: "Utility",
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     const embed = new MessageEmbed()
       .setTitle("Ping!")

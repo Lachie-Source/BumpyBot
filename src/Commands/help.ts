@@ -1,11 +1,13 @@
 import Discord, { MessageEmbed } from "discord.js";
-import { MultiPageEmbed } from "../structures/MultiPageEmbed";
+import { MultiPageEmbed } from "../structures/Embeds/MultiPageEmbed";
 import { toTitleCase } from "../functions/titleCases";
 
 export = {
   name: "help",
   aliases: ["commands"],
   permissions: [],
+  description: "Displays All The Commands",
+  type: "Utility",
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     var index = -1;
     const embeds = new MultiPageEmbed(
@@ -40,6 +42,11 @@ export = {
                 inline: true,
               },
               {
+                name: "> Type",
+                value: toTitleCase(cmd.type),
+                inline: true,
+              },
+              {
                 name: "> Required Permissions",
                 value:
                   cmd.permissions.toString().length != 0
@@ -47,6 +54,10 @@ export = {
                         .map((command: any) => toTitleCase(command))
                         .join(", ")
                     : "None",
+              },
+              {
+                name: "> Description",
+                value: cmd.description,
               },
             ]);
         })

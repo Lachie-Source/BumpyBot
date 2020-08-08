@@ -4,6 +4,8 @@ export = {
   name: "invite",
   aliases: [],
   permissions: ["CREATE_INSTANT_INVITE"],
+  description: "Get An Invite For The Server And Bot",
+  type: "Utility",
   async execute(
     message: Discord.Message,
     args: string[],

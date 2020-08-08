@@ -1,5 +1,5 @@
 import Discord, { MessageEmbed } from "discord.js";
-import { clamp } from "../functions/clamp";
+import { clamp } from "../../functions/clamp";
 
 export class MultiPageEmbed {
   embeds: MessageEmbed[];

@@ -5,6 +5,8 @@ module.exports = {
     name: "ping",
     aliases: ["status"],
     permissions: [],
+    description: "Get The Client's Uptime And Latency",
+    type: "Utility",
     execute(message, args, client) {
         var _a, _b;
         const embed = new discord_js_1.MessageEmbed()
