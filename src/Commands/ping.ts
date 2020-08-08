@@ -5,6 +5,7 @@ import prettyMilliseconds from "pretty-ms";
 export = {
   name: "ping",
   aliases: ["status"],
+  permissions: [],
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     const embed = new MessageEmbed()
       .setTitle("Ping!")

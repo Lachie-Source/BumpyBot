@@ -35,7 +35,7 @@ export = {
           if (inspected.toString().length < 1900 - args.length) {
             embed
               .setDescription(
-                `\`\`\`js\n${args}\n\`\`\`\n\n\`\`\`js\n${inspected}\n\`\`\``
+                `\`\`\`ts\n${args}\n\`\`\`\n\n\`\`\`ts\n${inspected}\n\`\`\``
               )
               .setColor(`${message.member?.displayHexColor}`);
             m.edit(embed);
@@ -47,17 +47,17 @@ export = {
             });
 
             embed
-              .setDescription(`\`\`\`js\n${args}\`\`\`\n\n${haste}`)
+              .setDescription(`\`\`\`ts\n${args}\`\`\`\n\n${haste}`)
               .setColor(`${message.member?.displayHexColor}`);
 
             m.edit(embed);
           }
         } catch (err) {
-          m.edit(new ErrorEmbed(`\n\`\`\`js\n${err}\n\`\`\``));
+          m.edit(new ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
         }
       });
     } catch (err) {
-      message.channel.send(new ErrorEmbed(`\`\`\`\`js\n${err}\n\`\`\``));
+      message.channel.send(new ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
     }
   },
 };

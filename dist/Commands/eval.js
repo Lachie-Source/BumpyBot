@@ -18,6 +18,7 @@ const hastebin_1 = __importDefault(require("hastebin"));
 module.exports = {
     name: "eval",
     aliases: ["inspect", "e", "i"],
+    permissions: ["DEV"],
     execute(message, args, client) {
         var _a;
         return __awaiter(this, void 0, void 0, function* () {
@@ -41,7 +42,7 @@ module.exports = {
                         const inspected = yield util_1.inspect(code);
                         if (inspected.toString().length < 1900 - args.length) {
                             embed
-                                .setDescription(`\`\`\`js\n${args}\n\`\`\`\n\n\`\`\`js\n${inspected}\n\`\`\``)
+                                .setDescription(`\`\`\`ts\n${args}\n\`\`\`\n\n\`\`\`ts\n${inspected}\n\`\`\``)
                                 .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`);
                             m.edit(embed);
                         }
@@ -51,18 +52,18 @@ module.exports = {
                                 server: "https://hastebin.com",
                             });
                             embed
-                                .setDescription(`\`\`\`js\n${args}\`\`\`\n\n${haste}`)
+                                .setDescription(`\`\`\`ts\n${args}\`\`\`\n\n${haste}`)
                                 .setColor(`${(_c = message.member) === null || _c === void 0 ? void 0 : _c.displayHexColor}`);
                             m.edit(embed);
                         }
                     }
                     catch (err) {
-                        m.edit(new ErrorEmbed_1.ErrorEmbed(`\n\`\`\`js\n${err}\n\`\`\``));
+                        m.edit(new ErrorEmbed_1.ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
                     }
                 }));
             }
             catch (err) {
-                message.channel.send(new ErrorEmbed_1.ErrorEmbed("```js\n${err}\n```"));
+                message.channel.send(new ErrorEmbed_1.ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
             }
         });
     },

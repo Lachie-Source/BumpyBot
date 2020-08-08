@@ -19,6 +19,18 @@ export function CommandHandlerMessage(
 
     if (!checkcmd) return;
 
+    if (
+      checkcmd.permissions.includes("DEV") &&
+      !(message.author.id == "655256461101891585")
+    ) {
+      message.channel.send(
+        new ErrorEmbed(
+          "You Dont Have Enough Permissions To Perform This Command"
+        )
+      );
+      return;
+    }
+
     try {
       checkcmd.execute(message, args, client);
     } catch (e) {
