@@ -4,9 +4,11 @@ import { Appearance } from "./init/Appearance";
 import EventHandler from "./Events/EventHandler";
 import { CommandHandler } from "./structures/CommandHandler";
 
+require("dot-env").config();
+
 // Base Variables
 const client = new Discord.Client();
-const token = "NzQxMTU3NDEyMDYwNTI4NzAx.XyzeoQ.YOOs9vsbojiKHxFkIG0I-YXxM_g";
+const token = process.env.token;
 
 // Handlers
 try {
