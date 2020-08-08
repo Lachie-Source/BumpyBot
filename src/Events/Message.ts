@@ -19,7 +19,21 @@ export function CommandHandlerMessage(
 
     if (!checkcmd) return;
 
-    if (false) {
+    console.log(
+      !(message.author.id == "655256461101891585") &&
+        checkcmd.permissions.includes("DEV"),
+      !message.member?.hasPermission(
+        checkcmd.permissions.filter((x: string) => x != "DEV")
+      )
+    );
+
+    if (
+      (!(message.author.id == "655256461101891585") &&
+        checkcmd.permissions.includes("DEV")) ||
+      !message.member?.hasPermission(
+        checkcmd.permissions.filter((x: string) => x != "DEV")
+      )
+    ) {
       message.channel.send(
         new ErrorEmbed(
           "You Dont Have Enough Permissions To Perform This Command"
