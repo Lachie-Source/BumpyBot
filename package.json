@@ -11,21 +11,21 @@
     "type": "git",
     "url": "git+https://github.com/Lachie-Source/Farming-Simulator.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Bumpy",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Lachie-Source/Farming-Simulator/issues"
   },
   "homepage": "https://github.com/Lachie-Source/Farming-Simulator#readme",
   "dependencies": {
-    "@types/node": "^14.0.27",
     "bot-utils": "^1.4.2",
     "discord.js": "^12.2.0",
     "dot-env": "0.0.1",
     "hastebin": "^0.2.1",
-    "ts-node": "^8.10.2",
-    "typescript": "^3.9.7"
+    "ts-node": "^8.10.2"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^14.0.27",
+    "typescript": "^3.9.7"
+  }
 }
