@@ -1,7 +1,6 @@
 "use strict";
 const discord_js_1 = require("discord.js");
 const bot_utils_1 = require("bot-utils");
-const os_1 = require("os");
 module.exports = {
     name: "ping",
     aliases: ["status"],
@@ -18,8 +17,7 @@ module.exports = {
                 .setDescription("")
                 .addField("> Client Latency", `\`${msg.createdTimestamp - message.createdTimestamp}ms\``, true)
                 .addField("> API Latency", `\`${Math.round(client.ws.ping)}ms\``, true)
-                .addField("> Client Uptime", `\`${bot_utils_1.uptime()}\``, true)
-                .addField("> CPU Usage", `\`${os_1.loadavg()}\``, true);
+                .addField("> Client Uptime", `\`${bot_utils_1.uptime()}\``, true);
             msg.edit(embed);
         });
     },
