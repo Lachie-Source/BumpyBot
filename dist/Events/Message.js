@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientPingedMessage = exports.CommandHandlerMessage = void 0;
 const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
 const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
-const FieldedEmbed_1 = require("../structures/Embeds/FieldedEmbed");
+const InformationEmbed_1 = require("../structures/Embeds/InformationEmbed");
 function CommandHandlerMessage(client, prefix = "b!") {
     client.on("message", (message) => {
         var _a;
@@ -35,7 +35,7 @@ function ClientPingedMessage(client) {
     client.on("message", (message) => {
         var _a, _b;
         if (message.content == `<@!${(_a = client.user) === null || _a === void 0 ? void 0 : _a.id}>`) {
-            message.channel.send(new FieldedEmbed_1.FieldedEmbed((_b = message.member) === null || _b === void 0 ? void 0 : _b.displayColor, [
+            message.channel.send(new InformationEmbed_1.InformationEmbed("BumpyBot", (_b = message.member) === null || _b === void 0 ? void 0 : _b.displayColor, [
                 {
                     name: "> Prefix",
                     value: "b!",

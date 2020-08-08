@@ -1,6 +1,7 @@
 import Discord from "discord.js";
 import { MessageEmbed } from "discord.js";
-import prettyMilliseconds from "pretty-ms";
+import { uptime } from "bot-utils";
+import { loadavg } from "os";
 
 export = {
   name: "ping",
@@ -22,11 +23,7 @@ export = {
           true
         )
         .addField("> API Latency", `\`${Math.round(client.ws.ping)}ms\``, true)
-        .addField(
-          "> Client Uptime",
-          `\`${prettyMilliseconds(client.uptime)}\``,
-          true
-        );
+        .addField("> Client Uptime", `\`${uptime()}\``, true);
 
       msg.edit(embed);
     });

@@ -11,8 +11,8 @@ const CommandHandler_1 = require("./structures/CommandHandler");
 // Base Variables
 const client = new discord_js_1.default.Client();
 const token = "NzQxMTU3NDEyMDYwNTI4NzAx.XyzeoQ.YOOs9vsbojiKHxFkIG0I-YXxM_g";
+// Handlers
 try {
-    // Handlers
     //   Command Handler
     CommandHandler_1.CommandHandler(client);
     //   Event Handler

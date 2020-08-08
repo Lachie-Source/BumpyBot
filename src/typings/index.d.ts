@@ -1,4 +1,4 @@
-import { EmbedField } from "discord.js";
+import Discord, { EmbedField } from "discord.js";
 declare module "BumpyBot" {
   export class ErrorEmbed extends MessageEmbed {
     constructor(message: string) {}
@@ -18,5 +18,9 @@ declare module "BumpyBot" {
     constructor(color: any, fields: EmbedField[] = []) {}
     public color: number;
     public fields: EmbedField[];
+  }
+  export class AuditManager {
+    constructor(client: Discord.Client) {}
+    public client: Discord.Client;
   }
 }

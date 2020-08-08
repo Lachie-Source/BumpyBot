@@ -8,8 +8,8 @@ import { CommandHandler } from "./structures/CommandHandler";
 const client = new Discord.Client();
 const token = "NzQxMTU3NDEyMDYwNTI4NzAx.XyzeoQ.YOOs9vsbojiKHxFkIG0I-YXxM_g";
 
+// Handlers
 try {
-  // Handlers
   //   Command Handler
   CommandHandler(client);
   //   Event Handler

@@ -1,9 +1,7 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 const discord_js_1 = require("discord.js");
-const pretty_ms_1 = __importDefault(require("pretty-ms"));
+const bot_utils_1 = require("bot-utils");
+const os_1 = require("os");
 module.exports = {
     name: "ping",
     aliases: ["status"],
@@ -20,7 +18,8 @@ module.exports = {
                 .setDescription("")
                 .addField("> Client Latency", `\`${msg.createdTimestamp - message.createdTimestamp}ms\``, true)
                 .addField("> API Latency", `\`${Math.round(client.ws.ping)}ms\``, true)
-                .addField("> Client Uptime", `\`${pretty_ms_1.default(client.uptime)}\``, true);
+                .addField("> Client Uptime", `\`${bot_utils_1.uptime()}\``, true)
+                .addField("> CPU Usage", `\`${os_1.loadavg()}\``, true);
             msg.edit(embed);
         });
     },
