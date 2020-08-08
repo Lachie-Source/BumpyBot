@@ -1,4 +1,5 @@
 import Discord, { MessageEmbed } from "discord.js";
+import { clamp } from "../functions/clamp";
 
 export class MultiPageEmbed {
   embeds: MessageEmbed[];
@@ -13,12 +14,17 @@ export class MultiPageEmbed {
   next() {
     this.page++;
     this.embed = this.embeds[this.page];
+    this.clamp();
   }
-  backward() {
+  backwards() {
     this.page--;
     this.embed = this.embeds[this.page];
+    this.clamp();
   }
   MessageEmbed() {
     return this.embed;
+  }
+  clamp() {
+    this.page = clamp(this.page, 0, 5);
   }
 }

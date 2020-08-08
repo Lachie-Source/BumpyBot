@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MultiPageEmbed = void 0;
+const clamp_1 = require("../functions/clamp");
 class MultiPageEmbed {
     constructor(embeds) {
         this.embeds = embeds;
@@ -10,13 +11,18 @@ class MultiPageEmbed {
     next() {
         this.page++;
         this.embed = this.embeds[this.page];
+        this.clamp();
     }
-    backward() {
+    backwards() {
         this.page--;
         this.embed = this.embeds[this.page];
+        this.clamp();
     }
     MessageEmbed() {
         return this.embed;
+    }
+    clamp() {
+        this.page = clamp_1.clamp(this.page, 0, 5);
     }
 }
 exports.MultiPageEmbed = MultiPageEmbed;
