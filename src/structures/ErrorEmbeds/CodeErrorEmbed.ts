@@ -4,7 +4,6 @@ export class CodeErrorEmbed extends MessageEmbed {
     super();
     this.title = `Error!`;
     this.fields = [
-      { name: "> TS", value: `\`\`\`ts\n${err}\n\`\`\``, inline: false },
       { name: "> JS", value: `\`\`\`js\n${err}\n\`\`\``, inline: false },
     ];
     this.color = 15158332;
