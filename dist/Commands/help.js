@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const discord_js_1 = require("discord.js");
 const MultiPageEmbed_1 = require("../structures/Embeds/MultiPageEmbed");
 const titleCases_1 = require("../functions/titleCases");
+const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
 module.exports = {
     name: "help",
     aliases: ["commands"],
@@ -79,6 +80,21 @@ module.exports = {
                 ]);
             }),
         ]);
+        if (args[0]) {
+            const checkcmd = client.commands
+                .filter((cmd) => !cmd.permissions.includes("DEV"))
+                .map((cmd) => cmd.name)
+                .indexOf(args[0]) ||
+                client.commands
+                    .filter((cmd) => !cmd.permissions.includes("DEV"))
+                    .map((cmd) => cmd.aliases)
+                    .indexOf(args[0]);
+            if (checkcmd === -1) {
+                message.channel.send(new UserErrorEmbed_1.UserErrorEmbed(`Unknown Command (Or Aliase) "${args[0]}"`));
+                return;
+            }
+            embeds.setPage(checkcmd + 1);
+        }
         message.channel
             .send(embeds.MessageEmbed())
             .then((msg) => __awaiter(this, void 0, void 0, function* () {

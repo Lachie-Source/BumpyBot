@@ -23,6 +23,11 @@ class MultiPageEmbed {
     }
     clamp() {
         this.page = clamp_1.clamp(this.page, 0, 5);
+        this.embed = this.embeds[this.page];
+    }
+    setPage(n) {
+        this.page = clamp_1.clamp(n, 0, 5);
+        this.embed = this.embeds[this.page];
     }
 }
 exports.MultiPageEmbed = MultiPageEmbed;

@@ -1,6 +1,7 @@
 import Discord, { MessageEmbed } from "discord.js";
 import { MultiPageEmbed } from "../structures/Embeds/MultiPageEmbed";
 import { toTitleCase } from "../functions/titleCases";
+import { UserErrorEmbed } from "../structures/Embeds/ErrorEmbeds/UserErrorEmbed";
 
 export = {
   name: "help",
@@ -85,6 +86,23 @@ export = {
             ]);
         }),
     ]);
+
+    if (args[0]) {
+      const checkcmd = client.commands
+        .filter((cmd: any) => !cmd.permissions.includes("DEV"))
+        .map((cmd: any) => cmd.name)
+        .indexOf(args[0]);
+
+      if (checkcmd === -1) {
+        message.channel.send(
+          new UserErrorEmbed(`Unknown Command "${args[0]}"`)
+        );
+        return;
+      }
+
+      embeds.setPage(checkcmd + 1);
+    }
+
     message.channel
       .send(embeds.MessageEmbed())
       .then(async (msg: Discord.Message) => {
