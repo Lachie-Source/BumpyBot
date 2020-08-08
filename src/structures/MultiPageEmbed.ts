@@ -13,13 +13,13 @@ export class MultiPageEmbed {
 
   next() {
     this.page++;
-    this.embed = this.embeds[this.page];
     this.clamp();
+    this.embed = this.embeds[this.page];
   }
   backwards() {
     this.page--;
-    this.embed = this.embeds[this.page];
     this.clamp();
+    this.embed = this.embeds[this.page];
   }
   MessageEmbed() {
     return this.embed;

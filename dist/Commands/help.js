@@ -17,12 +17,16 @@ module.exports = {
     permissions: [],
     execute(message, args, client) {
         var index = -1;
-        const embeds = new MultiPageEmbed_1.MultiPageEmbed(client.commands.map((cmd) => {
+        const embeds = new MultiPageEmbed_1.MultiPageEmbed(client.commands
+            .filter((x) => !x.permissions.includes("DEV"))
+            .map((cmd) => {
             var _a, _b;
             index++;
             return new discord_js_1.MessageEmbed()
                 .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, message.author.avatarURL())
-                .setTitle(`Help - Page ${index + 1}/${client.commands.array().length}`)
+                .setTitle(`Help - Page ${index + 1}/${client.commands
+                .array()
+                .filter((x) => !x.permissions.includes("DEV")).length}`)
                 .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`)
                 .addFields([
                 {
@@ -38,6 +42,19 @@ module.exports = {
                             .join(", ")
                         : "None",
                     inline: true,
+                },
+                {
+                    name: "> Required Permissions",
+                    value: cmd.permissions.toString().length != 0
+                        ? cmd.permissions
+                            .map((command) => command
+                            .split("_")
+                            .forEach((cmd) => {
+                            return titleCases_1.toTitleCase(cmd);
+                        })
+                            .join(" "))
+                            .join(", ")
+                        : "None",
                 },
             ]);
         }));

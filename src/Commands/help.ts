@@ -9,32 +9,47 @@ export = {
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     var index = -1;
     const embeds = new MultiPageEmbed(
-      client.commands.map((cmd: any) => {
-        index++;
-        return new MessageEmbed()
-          .setAuthor(message.member?.displayName, message.author.avatarURL())
-          .setTitle(
-            `Help - Page ${index + 1}/${client.commands.array().length}`
-          )
-          .setColor(`${message.member?.displayHexColor}`)
-          .addFields([
-            {
-              name: "> Command",
-              value: toTitleCase(cmd.name),
-              inline: true,
-            },
-            {
-              name: "> Aliases",
-              value:
-                cmd.aliases.toString().length != 0
-                  ? cmd.aliases
-                      .map((command: any) => toTitleCase(command))
-                      .join(", ")
-                  : "None",
-              inline: true,
-            },
-          ]);
-      })
+      client.commands
+        .filter((x: any) => !x.permissions.includes("DEV"))
+        .map((cmd: any) => {
+          index++;
+          return new MessageEmbed()
+            .setAuthor(message.member?.displayName, message.author.avatarURL())
+            .setTitle(
+              `Help - Page ${index + 1}/${
+                client.commands
+                  .array()
+                  .filter((x: any) => !x.permissions.includes("DEV")).length
+              }`
+            )
+            .setColor(`${message.member?.displayHexColor}`)
+            .addFields([
+              {
+                name: "> Command",
+                value: toTitleCase(cmd.name),
+                inline: true,
+              },
+              {
+                name: "> Aliases",
+                value:
+                  cmd.aliases.toString().length != 0
+                    ? cmd.aliases
+                        .map((command: any) => toTitleCase(command))
+                        .join(", ")
+                    : "None",
+                inline: true,
+              },
+              {
+                name: "> Required Permissions",
+                value:
+                  cmd.permissions.toString().length != 0
+                    ? cmd.permissions
+                        .map((command: any) => toTitleCase(command))
+                        .join(", ")
+                    : "None",
+              },
+            ]);
+        })
     );
     message.channel
       .send(embeds.MessageEmbed())
