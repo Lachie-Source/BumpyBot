@@ -10,13 +10,36 @@ export = {
   type: "Utility",
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     var index = -1;
-    const embeds = new MultiPageEmbed(
-      client.commands
+
+    const glossaryEmbed = new MessageEmbed()
+      .setAuthor(message.member?.displayName, message.author.avatarURL())
+      .setColor(`${message.member?.displayHexColor}`)
+      .setFooter(
+        'React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page'
+      )
+      .setTitle("Help - Glossary");
+
+    client.commands
+      .filter((cmd: any) => !cmd.permissions.includes("DEV"))
+      .forEach((cmd: any) => {
+        glossaryEmbed.addField(
+          `> ${toTitleCase(cmd.name)}`,
+          `\`${cmd.description}\``,
+          false
+        );
+      });
+
+    const embeds = new MultiPageEmbed([
+      glossaryEmbed,
+      ...client.commands
         .filter((x: any) => !x.permissions.includes("DEV"))
         .map((cmd: any) => {
           index++;
           return new MessageEmbed()
             .setAuthor(message.member?.displayName, message.author.avatarURL())
+            .setFooter(
+              'React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page'
+            )
             .setTitle(
               `Help - Page ${index + 1}/${
                 client.commands
@@ -60,8 +83,8 @@ export = {
                 value: cmd.description,
               },
             ]);
-        })
-    );
+        }),
+    ]);
     message.channel
       .send(embeds.MessageEmbed())
       .then(async (msg: Discord.Message) => {
@@ -74,10 +97,10 @@ export = {
           reaction.emoji.name === "⏪" && user.id === message.author.id;
 
         const forward = msg.createReactionCollector(forwardFilter, {
-          time: 60000,
+          time: 300000,
         });
         const backwards = msg.createReactionCollector(backwardsFilter, {
-          time: 60000,
+          time: 300000,
         });
 
         forward.on("collect", async (r) => {

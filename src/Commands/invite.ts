@@ -4,7 +4,7 @@ export = {
   name: "invite",
   aliases: [],
   permissions: ["CREATE_INSTANT_INVITE"],
-  description: "Get An Invite For The Server And Bot",
+  description: "Get An Invite For The Server And The Bot",
   type: "Utility",
   async execute(
     message: Discord.Message,
