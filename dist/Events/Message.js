@@ -4,6 +4,7 @@ exports.CommandHandlerMessage = void 0;
 const ErrorEmbed_1 = require("../structures/ErrorEmbed");
 function CommandHandlerMessage(client, prefix = "b!") {
     client.on("message", (message) => {
+        var _a;
         if (!message.content.toLowerCase().startsWith(prefix))
             return;
         const args = message.content.slice(prefix.length).split(/ +/);
@@ -14,7 +15,7 @@ function CommandHandlerMessage(client, prefix = "b!") {
         if (!checkcmd)
             return;
         if (checkcmd.permissions.includes("DEV") &&
-            !(message.author.id == "655256461101891585")) {
+            !(message.author.id == "655256461101891585") && ((_a = message.member) === null || _a === void 0 ? void 0 : _a.hasPermission(checkcmd.permissions))) {
             message.channel.send(new ErrorEmbed_1.ErrorEmbed("You Dont Have Enough Permissions To Perform This Command"));
             return;
         }

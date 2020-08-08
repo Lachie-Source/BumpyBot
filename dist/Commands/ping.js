@@ -7,7 +7,7 @@ const pretty_ms_1 = __importDefault(require("pretty-ms"));
 module.exports = {
     name: "ping",
     aliases: ["status"],
-    permissions: [],
+    permissions: ["ADMINISTRATOR"],
     execute(message, args, client) {
         var _a, _b;
         const embed = new discord_js_1.MessageEmbed()
