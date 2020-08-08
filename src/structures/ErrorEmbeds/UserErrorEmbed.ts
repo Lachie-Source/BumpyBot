@@ -1,5 +1,5 @@
 import { MessageEmbed } from "discord.js";
-export class ErrorEmbed extends MessageEmbed {
+export class UserErrorEmbed extends MessageEmbed {
   constructor(message: string) {
     super();
     this.title = `Error! ${message}`;

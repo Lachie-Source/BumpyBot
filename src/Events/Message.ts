@@ -1,5 +1,6 @@
 import Discord from "discord.js";
-import { ErrorEmbed } from "../structures/ErrorEmbed";
+import { UserErrorEmbed } from "../structures/ErrorEmbeds/UserErrorEmbed";
+import { CodeErrorEmbed } from "../structures/ErrorEmbeds/CodeErrorEmbed";
 
 export function CommandHandlerMessage(
   client: Discord.Client,
@@ -19,14 +20,6 @@ export function CommandHandlerMessage(
 
     if (!checkcmd) return;
 
-    console.log(
-      !(message.author.id == "655256461101891585") &&
-        checkcmd.permissions.includes("DEV"),
-      !message.member?.hasPermission(
-        checkcmd.permissions.filter((x: string) => x != "DEV")
-      )
-    );
-
     if (
       (!(message.author.id == "655256461101891585") &&
         checkcmd.permissions.includes("DEV")) ||
@@ -35,7 +28,7 @@ export function CommandHandlerMessage(
       )
     ) {
       message.channel.send(
-        new ErrorEmbed(
+        new UserErrorEmbed(
           "You Dont Have Enough Permissions To Perform This Command"
         )
       );
@@ -45,7 +38,7 @@ export function CommandHandlerMessage(
     try {
       checkcmd.execute(message, args, client);
     } catch (e) {
-      message.channel.send(new ErrorEmbed(e));
+      message.channel.send(new CodeErrorEmbed(e));
     }
   });
 }

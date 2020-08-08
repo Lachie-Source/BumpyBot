@@ -3,4 +3,8 @@ declare module "BumpyBot" {
     constructor(message: string) {}
     public message: string;
   }
+  export class CodeError extends MessageEmbed {
+    constructor(message: string) {}
+    public err: string;
+  }
 }

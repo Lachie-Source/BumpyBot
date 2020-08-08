@@ -1,6 +1,7 @@
 import Discord from "discord.js";
 import { MessageEmbed } from "discord.js";
-import { ErrorEmbed } from "../structures/ErrorEmbed";
+import { UserErrorEmbed } from "../structures/ErrorEmbeds/UserErrorEmbed";
+import { CodeErrorEmbed } from "../structures/ErrorEmbeds/CodeErrorEmbed";
 import { inspect } from "util";
 import hastebin from "hastebin";
 
@@ -18,7 +19,7 @@ export = {
     try {
       message.channel.send(embed).then(async (m) => {
         if (!args[0]) {
-          m.edit(new ErrorEmbed("Please Supply Valid JavaScript"));
+          m.edit(new UserErrorEmbed("Please Supply Valid JavaScript"));
 
           return;
         }
@@ -53,11 +54,11 @@ export = {
             m.edit(embed);
           }
         } catch (err) {
-          m.edit(new ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
+          m.edit(new CodeErrorEmbed(err));
         }
       });
     } catch (err) {
-      message.channel.send(new ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
+      message.channel.send(new CodeErrorEmbed(err));
     }
   },
 };

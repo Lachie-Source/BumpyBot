@@ -12,7 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 const discord_js_1 = require("discord.js");
-const ErrorEmbed_1 = require("../structures/ErrorEmbed");
+const UserErrorEmbed_1 = require("../structures/ErrorEmbeds/UserErrorEmbed");
+const CodeErrorEmbed_1 = require("../structures/ErrorEmbeds/CodeErrorEmbed");
 const util_1 = require("util");
 const hastebin_1 = __importDefault(require("hastebin"));
 module.exports = {
@@ -31,7 +32,7 @@ module.exports = {
                 message.channel.send(embed).then((m) => __awaiter(this, void 0, void 0, function* () {
                     var _b, _c;
                     if (!args[0]) {
-                        m.edit(new ErrorEmbed_1.ErrorEmbed("Please Supply Valid JavaScript"));
+                        m.edit(new UserErrorEmbed_1.UserErrorEmbed("Please Supply Valid JavaScript"));
                         return;
                     }
                     args = args.join(" ");
@@ -58,12 +59,12 @@ module.exports = {
                         }
                     }
                     catch (err) {
-                        m.edit(new ErrorEmbed_1.ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
+                        m.edit(new CodeErrorEmbed_1.CodeErrorEmbed(err));
                     }
                 }));
             }
             catch (err) {
-                message.channel.send(new ErrorEmbed_1.ErrorEmbed(`\`\`\`ts\n${err}\n\`\`\``));
+                message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(err));
             }
         });
     },
