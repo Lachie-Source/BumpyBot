@@ -28,9 +28,7 @@ export function CommandHandlerMessage(
       )
     ) {
       message.channel.send(
-        new UserErrorEmbed(
-          "You Dont Have Enough Permissions To Perform This Command"
-        )
+        new UserErrorEmbed("You Dont Have Permission To Perform This Command")
       );
       return;
     }
