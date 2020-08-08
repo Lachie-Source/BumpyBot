@@ -1,7 +1,7 @@
 import Discord from "discord.js";
 import { MessageEmbed } from "discord.js";
-import { UserErrorEmbed } from "../structures/ErrorEmbeds/UserErrorEmbed";
-import { CodeErrorEmbed } from "../structures/ErrorEmbeds/CodeErrorEmbed";
+import { UserErrorEmbed } from "../structures/Embeds/ErrorEmbeds/UserErrorEmbed";
+import { CodeErrorEmbed } from "../structures/Embeds/ErrorEmbeds/CodeErrorEmbed";
 import { inspect } from "util";
 import hastebin from "hastebin";
 
@@ -20,7 +20,6 @@ export = {
       message.channel.send(embed).then(async (m) => {
         if (!args[0]) {
           m.edit(new UserErrorEmbed("Please Supply Valid JavaScript"));
-
           return;
         }
 

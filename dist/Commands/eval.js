@@ -12,8 +12,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 const discord_js_1 = require("discord.js");
-const UserErrorEmbed_1 = require("../structures/ErrorEmbeds/UserErrorEmbed");
-const CodeErrorEmbed_1 = require("../structures/ErrorEmbeds/CodeErrorEmbed");
+const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
+const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
 const util_1 = require("util");
 const hastebin_1 = __importDefault(require("hastebin"));
 module.exports = {

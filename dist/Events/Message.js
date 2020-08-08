@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CommandHandlerMessage = void 0;
-const UserErrorEmbed_1 = require("../structures/ErrorEmbeds/UserErrorEmbed");
-const CodeErrorEmbed_1 = require("../structures/ErrorEmbeds/CodeErrorEmbed");
+exports.ClientPingedMessage = exports.CommandHandlerMessage = void 0;
+const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
+const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
+const FieldedEmbed_1 = require("../structures/Embeds/FieldedEmbed");
 function CommandHandlerMessage(client, prefix = "b!") {
     client.on("message", (message) => {
         var _a;
@@ -18,7 +19,7 @@ function CommandHandlerMessage(client, prefix = "b!") {
         if ((!(message.author.id == "655256461101891585") &&
             checkcmd.permissions.includes("DEV")) ||
             !((_a = message.member) === null || _a === void 0 ? void 0 : _a.hasPermission(checkcmd.permissions.filter((x) => x != "DEV")))) {
-            message.channel.send(new UserErrorEmbed_1.UserErrorEmbed("You Dont Have Enough Permissions To Perform This Command"));
+            message.channel.send(new UserErrorEmbed_1.UserErrorEmbed("You Dont Have Permission To Perform This Command"));
             return;
         }
         try {
@@ -30,3 +31,23 @@ function CommandHandlerMessage(client, prefix = "b!") {
     });
 }
 exports.CommandHandlerMessage = CommandHandlerMessage;
+function ClientPingedMessage(client) {
+    client.on("message", (message) => {
+        var _a, _b;
+        if (message.content == `<@!${(_a = client.user) === null || _a === void 0 ? void 0 : _a.id}>`) {
+            message.channel.send(new FieldedEmbed_1.FieldedEmbed((_b = message.member) === null || _b === void 0 ? void 0 : _b.displayColor, [
+                {
+                    name: "> Prefix",
+                    value: "b!",
+                    inline: true,
+                },
+                {
+                    name: "> Help",
+                    value: "b!help",
+                    inline: true,
+                },
+            ]));
+        }
+    });
+}
+exports.ClientPingedMessage = ClientPingedMessage;
