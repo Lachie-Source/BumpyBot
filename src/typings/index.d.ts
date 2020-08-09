@@ -19,5 +19,4 @@ declare module "BumpyBot" {
     public color: number;
     public fields: EmbedField[];
   }
-  export function database();
 }

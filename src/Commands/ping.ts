@@ -19,26 +19,31 @@ export = {
       .setColor(`${message.member?.displayHexColor}`);
 
     message.channel.send(embed).then((msg) => {
-      embed
-        .setDescription("")
-        .addField(
-          "> Client Latency",
-          `\`${msg.createdTimestamp - message.createdTimestamp}ms\``,
-          true
-        )
-        .addField("> API Latency", `\`${Math.round(client.ws.ping)}ms\``, true)
-        .addField(
-          "> Client Uptime",
-          `\`${prettyms(client.uptime ? client.uptime : 0)}\``,
-          true
-        )
-        .addField(
-          "> OS Info",
-          `\`\`\`yaml\nOS Name: ${osName(
+      embed.setDescription("").addFields([
+        {
+          name: "> Client Latency",
+          value: `\`${msg.createdTimestamp - message.createdTimestamp}ms\``,
+          inline: true,
+        },
+        {
+          name: "> API Latency",
+          value: `\`${Math.round(client.ws.ping)}ms\``,
+          inline: true,
+        },
+        {
+          name: "> Client Uptime",
+          value: `\`${prettyms(client.uptime ? client.uptime : 0)}\``,
+          inline: true,
+        },
+
+        {
+          name: "> OS Info",
+          value: `\`\`\`yaml\nOS Name: ${osName(
             os.platform(),
             os.release()
-          )}\nCPU Architecture: ${os.arch()}\nCPU: Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz (x8)\n\`\`\``
-        );
+          )}\nCPU Architecture: ${os.arch()}\nCPU: Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz (x8)\n\`\`\``,
+        },
+      ]);
 
       msg.edit(embed);
     });
