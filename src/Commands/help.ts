@@ -6,9 +6,15 @@ import { UserErrorEmbed } from "../structures/Embeds/ErrorEmbeds/UserErrorEmbed"
 export = {
   name: "help",
   aliases: ["commands"],
-  permissions: [],
+  permissions: ["ADD_REACTIONS"],
   description: "Displays All The Commands",
   type: "Utility",
+  needperms: [
+    "SEND_MESSAGES",
+    "MANAGE_MESSAGES",
+    "EMBED_LINKS",
+    "ADD_REACTIONS",
+  ],
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     var index = -1;
 
@@ -79,6 +85,14 @@ export = {
                   cmd.permissions.toString().length != 0
                     ? cmd.permissions.join(", ")
                     : "None",
+              },
+              {
+                name: "> Bot's Required Permissions",
+                value:
+                  cmd.needperms.toString().length != 0
+                    ? cmd.needperms.join(", ")
+                    : "None",
+                inline: true,
               },
               {
                 name: "> Description",

@@ -8,6 +8,7 @@ export = {
   permissions: [],
   description: "Get The Client's Uptime And Latency",
   type: "Utility",
+  needperms: ["SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS"],
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     const embed = new MessageEmbed()
       .setTitle("Ping!")

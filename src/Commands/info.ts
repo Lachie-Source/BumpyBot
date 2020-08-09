@@ -7,6 +7,7 @@ export = {
   permissions: [],
   description: "All The Information For BumpyBot",
   type: "Utility",
+  needperms: ["SEND_MESSAGES", "EMBED_LINKS"],
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     const embed = new MessageEmbed()
       .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
