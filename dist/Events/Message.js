@@ -1,12 +1,23 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientPingedMessage = exports.CommandHandlerMessage = void 0;
 const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
 const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
 const InformationEmbed_1 = require("../structures/Embeds/InformationEmbed");
 function CommandHandlerMessage(client, prefix = "b!") {
-    client.on("message", (message) => {
+    client.on("message", (message) => __awaiter(this, void 0, void 0, function* () {
+        // Retrieve Prefix From Database
         var _a;
+        // Handler
         if (!message.content.toLowerCase().startsWith(prefix))
             return;
         const args = message.content.slice(prefix.length).split(/ +/);
@@ -28,7 +39,7 @@ function CommandHandlerMessage(client, prefix = "b!") {
         catch (e) {
             message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(e));
         }
-    });
+    }));
 }
 exports.CommandHandlerMessage = CommandHandlerMessage;
 function ClientPingedMessage(client) {
