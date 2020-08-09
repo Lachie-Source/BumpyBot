@@ -1,6 +1,8 @@
 import Discord from "discord.js";
 import { MessageEmbed } from "discord.js";
-import { uptime } from "bot-utils";
+import os from "os";
+import osName from "os-name";
+import prettyms from "pretty-ms";
 
 export = {
   name: "ping",
@@ -25,7 +27,18 @@ export = {
           true
         )
         .addField("> API Latency", `\`${Math.round(client.ws.ping)}ms\``, true)
-        .addField("> Client Uptime", `\`${uptime()}\``, true);
+        .addField(
+          "> Client Uptime",
+          `\`${prettyms(client.uptime ? client.uptime : 0)}\``,
+          true
+        )
+        .addField(
+          "> OS Info",
+          `\`\`\`yaml\nOS Name: ${osName(
+            os.platform(),
+            os.release()
+          )}\nCPU Architecture: ${os.arch()}\nCPU: Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz (x8)\n\`\`\``
+        );
 
       msg.edit(embed);
     });

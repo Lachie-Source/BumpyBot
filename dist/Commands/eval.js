@@ -9,7 +9,7 @@ const util_1 = require("util");
 const hastebin_1 = __importDefault(require("hastebin"));
 module.exports = {
     name: "eval",
-    aliases: ["inspect", "e", "i"],
+    aliases: ["inspect", "code"],
     permissions: ["DEV"],
     async execute(message, args, client) {
         const embed = new discord_js_1.MessageEmbed()

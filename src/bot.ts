@@ -19,6 +19,7 @@ try {
   //   Event Handler
   EventHandler.CommandHandlerMessage(client);
   EventHandler.ClientPingedMessage(client);
+  EventHandler.ClientDM(client);
 } catch (e) {
   console.log(e);
 }

@@ -1,6 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 const discord_js_1 = require("discord.js");
-const bot_utils_1 = require("bot-utils");
+const os_1 = __importDefault(require("os"));
+const os_name_1 = __importDefault(require("os-name"));
+const pretty_ms_1 = __importDefault(require("pretty-ms"));
 module.exports = {
     name: "ping",
     aliases: ["status"],
@@ -19,7 +24,8 @@ module.exports = {
                 .setDescription("")
                 .addField("> Client Latency", `\`${msg.createdTimestamp - message.createdTimestamp}ms\``, true)
                 .addField("> API Latency", `\`${Math.round(client.ws.ping)}ms\``, true)
-                .addField("> Client Uptime", `\`${bot_utils_1.uptime()}\``, true);
+                .addField("> Client Uptime", `\`${pretty_ms_1.default(client.uptime ? client.uptime : 0)}\``, true)
+                .addField("> OS Info", `\`\`\`yaml\nOS Name: ${os_name_1.default(os_1.default.platform(), os_1.default.release())}\nCPU Architecture: ${os_1.default.arch()}\nCPU: Intel(R) Core(TM) i5-8265U CPU @ 1.60GHz (x8)\n\`\`\``);
             msg.edit(embed);
         });
     },

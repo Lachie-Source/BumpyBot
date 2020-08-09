@@ -7,7 +7,7 @@ import hastebin from "hastebin";
 
 export = {
   name: "eval",
-  aliases: ["inspect", "e", "i"],
+  aliases: ["inspect", "code"],
   permissions: ["DEV"],
   async execute(message: Discord.Message, args: any, client: Discord.Client) {
     const embed = new MessageEmbed()

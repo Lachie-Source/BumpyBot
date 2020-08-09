@@ -30,6 +30,10 @@ export = {
           name: "> Yeh, I Can Help; But Where?",
           value: `[Click Here!](https://github.com/Lachie-Source/BumpyBot)`,
         },
+        {
+          name: "> Got Any Other Questions?",
+          value: "`Message Me To Start A Support Session`",
+        },
       ]);
 
     message.channel.send(embed);
