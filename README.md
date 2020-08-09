@@ -1,2 +1,2 @@
 # BumpyBot
-BumpyBot Is An Efficient And Simple Discord Bot Written In TypeScript Powered By Discord.JS
+BumpyBot Is An Efficient And Simple Discord Bot Written In TypeScript And Powered By Discord.JS
