@@ -8,10 +8,9 @@ module.exports = {
     type: "Utility",
     needperms: ["SEND_MESSAGES", "EMBED_LINKS"],
     execute(message, args, client) {
-        var _a, _b;
         const embed = new discord_js_1.MessageEmbed()
-            .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, `${message.author.avatarURL()}`)
-            .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`)
+            .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
+            .setColor(`${message.member?.displayHexColor}`)
             .setTitle("Information")
             .addFields([
             {

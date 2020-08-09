@@ -1,22 +1,11 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientPingedMessage = exports.CommandHandlerMessage = void 0;
 const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
 const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
 const InformationEmbed_1 = require("../structures/Embeds/InformationEmbed");
 function CommandHandlerMessage(client, prefix = "b!") {
-    client.on("message", (message) => __awaiter(this, void 0, void 0, function* () {
-        // Retrieve Prefix From Database
-        var _a;
+    client.on("message", async (message) => {
         // Handler
         if (!message.content.toLowerCase().startsWith(prefix))
             return;
@@ -29,7 +18,7 @@ function CommandHandlerMessage(client, prefix = "b!") {
             return;
         if ((!(message.author.id == "655256461101891585") &&
             checkcmd.permissions.includes("DEV")) ||
-            !((_a = message.member) === null || _a === void 0 ? void 0 : _a.hasPermission(checkcmd.permissions.filter((x) => x != "DEV")))) {
+            !message.member?.hasPermission(checkcmd.permissions.filter((x) => x != "DEV"))) {
             message.channel.send(new UserErrorEmbed_1.UserErrorEmbed("You Dont Have Permission To Perform This Command"));
             return;
         }
@@ -39,14 +28,13 @@ function CommandHandlerMessage(client, prefix = "b!") {
         catch (e) {
             message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(e));
         }
-    }));
+    });
 }
 exports.CommandHandlerMessage = CommandHandlerMessage;
 function ClientPingedMessage(client) {
     client.on("message", (message) => {
-        var _a, _b;
-        if (message.content == `<@!${(_a = client.user) === null || _a === void 0 ? void 0 : _a.id}>`) {
-            message.channel.send(new InformationEmbed_1.InformationEmbed("BumpyBot", (_b = message.member) === null || _b === void 0 ? void 0 : _b.displayColor, [
+        if (message.content == `<@!${client.user?.id}>`) {
+            message.channel.send(new InformationEmbed_1.InformationEmbed("BumpyBot", message.member?.displayColor, [
                 {
                     name: "> Prefix",
                     value: "b!",

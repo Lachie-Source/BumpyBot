@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 const discord_js_1 = require("discord.js");
 const MultiPageEmbed_1 = require("../structures/Embeds/MultiPageEmbed");
 const titleCases_1 = require("../functions/titleCases");
@@ -25,11 +16,10 @@ module.exports = {
         "ADD_REACTIONS",
     ],
     execute(message, args, client) {
-        var _a, _b;
         var index = -1;
         const glossaryEmbed = new discord_js_1.MessageEmbed()
-            .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, `${message.author.avatarURL()}`)
-            .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`)
+            .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
+            .setColor(`${message.member?.displayHexColor}`)
             .setFooter('React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page')
             .setTitle("Help - Glossary");
         client.commands
@@ -42,15 +32,14 @@ module.exports = {
             ...client.commands
                 .filter((x) => !x.permissions.includes("DEV"))
                 .map((cmd) => {
-                var _a, _b;
                 index++;
                 return new discord_js_1.MessageEmbed()
-                    .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, `${message.author.avatarURL()}`)
+                    .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
                     .setFooter('React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page')
                     .setTitle(`Help - Page ${index + 1}/${client.commands
                     .array()
                     .filter((x) => !x.permissions.includes("DEV")).length}`)
-                    .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`)
+                    .setColor(`${message.member?.displayHexColor}`)
                     .addFields([
                     {
                         name: "> Command",
@@ -103,9 +92,9 @@ module.exports = {
         }
         message.channel
             .send(embeds.MessageEmbed())
-            .then((msg) => __awaiter(this, void 0, void 0, function* () {
-            yield msg.react("⏪");
-            yield msg.react("⏩");
+            .then(async (msg) => {
+            await msg.react("⏪");
+            await msg.react("⏩");
             const forwardFilter = (reaction, user) => reaction.emoji.name === "⏩" && user.id === message.author.id;
             const backwardsFilter = (reaction, user) => reaction.emoji.name === "⏪" && user.id === message.author.id;
             const forward = msg.createReactionCollector(forwardFilter, {
@@ -114,32 +103,32 @@ module.exports = {
             const backwards = msg.createReactionCollector(backwardsFilter, {
                 time: 300000,
             });
-            forward.on("collect", (r) => __awaiter(this, void 0, void 0, function* () {
+            forward.on("collect", async (r) => {
                 embeds.next();
                 msg.edit(embeds.MessageEmbed());
                 const userReactions = msg.reactions.cache.filter((reaction) => reaction.users.cache.has(message.author.id));
                 try {
                     for (const reaction of userReactions.values()) {
-                        yield reaction.users.remove(message.author.id);
+                        await reaction.users.remove(message.author.id);
                     }
                 }
                 catch (error) {
                     console.error("Failed to remove reactions.");
                 }
-            }));
-            backwards.on("collect", (r) => __awaiter(this, void 0, void 0, function* () {
+            });
+            backwards.on("collect", async (r) => {
                 embeds.backwards();
                 msg.edit(embeds.MessageEmbed());
                 const userReactions = msg.reactions.cache.filter((reaction) => reaction.users.cache.has(message.author.id));
                 try {
                     for (const reaction of userReactions.values()) {
-                        yield reaction.users.remove(message.author.id);
+                        await reaction.users.remove(message.author.id);
                     }
                 }
                 catch (error) {
                     console.error("Failed to remove reactions.");
                 }
-            }));
-        }));
+            });
+        });
     },
 };

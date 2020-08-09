@@ -1,4 +1,3 @@
-![Travis Build](https://img.shields.io/travis/Lachie-Source/BumpyBot?style=flat-square)
 ![Language Count](https://img.shields.io/github/languages/count/Lachie-Source/BumpyBot?style=flat-square)
 ![Dependencies](https://img.shields.io/david/Lachie-Source/BumpyBot?style=flat-square)
 ![Repo Size](https://img.shields.io/github/repo-size/Lachie-Source/BumpyBot?style=flat-square)
