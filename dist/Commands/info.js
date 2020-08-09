@@ -6,6 +6,7 @@ module.exports = {
     permissions: [],
     description: "All The Information For BumpyBot",
     type: "Utility",
+    needperms: ["SEND_MESSAGES", "EMBED_LINKS"],
     execute(message, args, client) {
         var _a, _b;
         const embed = new discord_js_1.MessageEmbed()

@@ -12,7 +12,7 @@ const discord_js_1 = require("discord.js");
 module.exports = {
     name: "invite",
     aliases: [],
-    permissions: ["CREATE_INSTANT_INVITE"],
+    permissions: ["CREATE_INSTANT_INVITE", "SEND_MESSAGES", "EMBED_LINKS"],
     description: "Create An Invite For The Server And The Bot",
     type: "Utility",
     execute(message, args, client) {
