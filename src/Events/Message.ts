@@ -7,7 +7,7 @@ export function CommandHandlerMessage(
   client: Discord.Client,
   prefix: string = "b!"
 ) {
-  client.on("message", async (message) => {
+  client.on("message", (message) => {
     // Handler
     if (!message.content.toLowerCase().startsWith(prefix)) return;
     const args = message.content.slice(prefix.length).split(/ +/);

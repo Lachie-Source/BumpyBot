@@ -19,8 +19,5 @@ declare module "BumpyBot" {
     public color: number;
     public fields: EmbedField[];
   }
-  export class AuditManager {
-    constructor(client: Discord.Client) {}
-    public client: Discord.Client;
-  }
+  export function database();
 }

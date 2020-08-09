@@ -5,7 +5,7 @@ const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbe
 const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
 const InformationEmbed_1 = require("../structures/Embeds/InformationEmbed");
 function CommandHandlerMessage(client, prefix = "b!") {
-    client.on("message", async (message) => {
+    client.on("message", (message) => {
         // Handler
         if (!message.content.toLowerCase().startsWith(prefix))
             return;
