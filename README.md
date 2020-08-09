@@ -1,3 +1,10 @@
+!(Travis Build)[https://img.shields.io/travis/Lachie-Source/BumpyBot?style=flat-square]
+!(Language Count)[https://img.shields.io/github/languages/count/Lachie-Source/BumpyBot?style=flat-square]
+!(Dependencies)[https://img.shields.io/david/Lachie-Source/BumpyBot?style=flat-square]
+!(Repo Size)[https://img.shields.io/github/repo-size/Lachie-Source/BumpyBot?style=flat-square]
+!(Open Issues)[https://img.shields.io/github/issues-raw/Lachie-Source/BumpyBot?style=flat-square]
+!(License)[https://img.shields.io/github/license/Lachie-Source/BumpyBot?style=flat-square]
+
 # BumpyBot
 
 BumpyBot Is An Efficient And Simple Discord Bot Written In TypeScript Powered By Discord.JS

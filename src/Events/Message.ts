@@ -7,7 +7,10 @@ export function CommandHandlerMessage(
   client: Discord.Client,
   prefix: string = "b!"
 ) {
-  client.on("message", (message) => {
+  client.on("message", async (message) => {
+    // Retrieve Prefix From Database
+
+    // Handler
     if (!message.content.toLowerCase().startsWith(prefix)) return;
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args[0].toLowerCase();
