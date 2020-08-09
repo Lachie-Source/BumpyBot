@@ -23,6 +23,13 @@ export function CommandHandlerMessage(
 
     if (!checkcmd) return;
 
+    if (!message.guild?.me?.hasPermission(checkcmd.needperms)) {
+      message.channel.send(
+        new UserErrorEmbed("I Dont Have Permission To Perform This Command")
+      );
+      return;
+    }
+
     if (
       (!(message.author.id == "655256461101891585") &&
         checkcmd.permissions.includes("DEV")) ||

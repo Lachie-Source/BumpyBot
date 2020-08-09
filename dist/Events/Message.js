@@ -19,6 +19,10 @@ function CommandHandlerMessage(client, prefix = "b!") {
             client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(command));
         if (!checkcmd)
             return;
+        if (!message.guild?.me?.hasPermission(checkcmd.needperms)) {
+            message.channel.send(new UserErrorEmbed_1.UserErrorEmbed("I Dont Have Permission To Perform This Command"));
+            return;
+        }
         if ((!(message.author.id == "655256461101891585") &&
             checkcmd.permissions.includes("DEV")) ||
             !message.member?.hasPermission(checkcmd.permissions.filter((x) => x != "DEV"))) {
