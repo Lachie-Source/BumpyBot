@@ -13,3 +13,4 @@ function Appearance(client) {
     });
 }
 exports.Appearance = Appearance;
+//# sourceMappingURL=Appearance.js.map

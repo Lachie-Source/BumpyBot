@@ -13,3 +13,4 @@ class CodeErrorEmbed extends discord_js_1.MessageEmbed {
     }
 }
 exports.CodeErrorEmbed = CodeErrorEmbed;
+//# sourceMappingURL=CodeErrorEmbed.js.map

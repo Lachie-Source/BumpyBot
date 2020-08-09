@@ -19,3 +19,4 @@ function CommandHandler(client) {
     client.commands.set("info", info_1.default);
 }
 exports.CommandHandler = CommandHandler;
+//# sourceMappingURL=CommandHandler.js.map

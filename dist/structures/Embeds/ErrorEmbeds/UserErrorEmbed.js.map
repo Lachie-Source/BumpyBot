@@ -1,0 +1,1 @@
+{"version":3,"file":"UserErrorEmbed.js","sourceRoot":"","sources":["../../../../src/structures/Embeds/ErrorEmbeds/UserErrorEmbed.ts"],"names":[],"mappings":";;;AAAA,2CAA0C;AAC1C,MAAa,cAAe,SAAQ,yBAAY;IAC9C,YAAY,OAAe;QACzB,KAAK,EAAE,CAAC;QACR,IAAI,CAAC,KAAK,GAAG,UAAU,OAAO,EAAE,CAAC;QACjC,IAAI,CAAC,KAAK,GAAG,QAAQ,CAAC;IACxB,CAAC;CACF;AAND,wCAMC"}

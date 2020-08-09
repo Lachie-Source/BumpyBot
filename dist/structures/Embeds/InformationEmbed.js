@@ -11,3 +11,4 @@ class InformationEmbed extends discord_js_1.MessageEmbed {
     }
 }
 exports.InformationEmbed = InformationEmbed;
+//# sourceMappingURL=InformationEmbed.js.map
