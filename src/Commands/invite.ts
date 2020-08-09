@@ -3,7 +3,8 @@ import Discord, { MessageEmbed } from "discord.js";
 export = {
   name: "invite",
   aliases: [],
-  permissions: ["CREATE_INSTANT_INVITE", "SEND_MESSAGES", "EMBED_LINKS"],
+  permissions: ["CREATE_INSTANT_INVITE"],
+  needperms: ["CREATE_INSTANT_INVITE", "SEND_MESSAGES", "EMBED_LINKS"],
   description: "Create An Invite For The Server And The Bot",
   type: "Utility",
   async execute(

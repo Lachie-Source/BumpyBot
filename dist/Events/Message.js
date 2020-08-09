@@ -42,8 +42,13 @@ function ClientPingedMessage(client) {
                     inline: true,
                 },
                 {
-                    name: "> Help",
+                    name: "> All Commands",
                     value: "b!help",
+                    inline: true,
+                },
+                {
+                    name: "> Additional Information",
+                    value: "b!info",
                     inline: true,
                 },
             ]));
