@@ -15,6 +15,7 @@ export = {
     const embed = new MessageEmbed()
       .setTitle("Invite Links")
       .setColor(`${message.member?.displayHexColor}`)
+      .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
       .addFields([
         {
           name: "> Server Invite",

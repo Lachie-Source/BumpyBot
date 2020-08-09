@@ -12,7 +12,7 @@ module.exports = {
         const embed = new discord_js_1.MessageEmbed()
             .setTitle("Ping!")
             .setDescription("Pinging...")
-            .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, message.author.avatarURL())
+            .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, `${message.author.avatarURL()}`)
             .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`);
         message.channel.send(embed).then((msg) => {
             embed

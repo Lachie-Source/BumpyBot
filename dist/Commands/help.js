@@ -22,7 +22,7 @@ module.exports = {
         var _a, _b;
         var index = -1;
         const glossaryEmbed = new discord_js_1.MessageEmbed()
-            .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, message.author.avatarURL())
+            .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, `${message.author.avatarURL()}`)
             .setColor(`${(_b = message.member) === null || _b === void 0 ? void 0 : _b.displayHexColor}`)
             .setFooter('React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page')
             .setTitle("Help - Glossary");
@@ -39,7 +39,7 @@ module.exports = {
                 var _a, _b;
                 index++;
                 return new discord_js_1.MessageEmbed()
-                    .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, message.author.avatarURL())
+                    .setAuthor((_a = message.member) === null || _a === void 0 ? void 0 : _a.displayName, `${message.author.avatarURL()}`)
                     .setFooter('React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page')
                     .setTitle(`Help - Page ${index + 1}/${client.commands
                     .array()

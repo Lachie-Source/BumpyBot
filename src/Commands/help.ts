@@ -13,7 +13,7 @@ export = {
     var index = -1;
 
     const glossaryEmbed = new MessageEmbed()
-      .setAuthor(message.member?.displayName, message.author.avatarURL())
+      .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
       .setColor(`${message.member?.displayHexColor}`)
       .setFooter(
         'React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page'
@@ -37,7 +37,10 @@ export = {
         .map((cmd: any) => {
           index++;
           return new MessageEmbed()
-            .setAuthor(message.member?.displayName, message.author.avatarURL())
+            .setAuthor(
+              message.member?.displayName,
+              `${message.author.avatarURL()}`
+            )
             .setFooter(
               'React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page'
             )

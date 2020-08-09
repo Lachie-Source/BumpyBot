@@ -25,7 +25,7 @@ module.exports = {
         return __awaiter(this, void 0, void 0, function* () {
             const embed = new discord_js_1.MessageEmbed()
                 .setTitle("Eval")
-                .setAuthor(message.author.username, message.author.avatarURL())
+                .setAuthor(message.author.username, `${message.author.avatarURL()}`)
                 .setDescription("Loading...")
                 .setColor(`${(_a = message.member) === null || _a === void 0 ? void 0 : _a.displayHexColor}`);
             try {

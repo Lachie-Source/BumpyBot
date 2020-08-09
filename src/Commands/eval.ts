@@ -12,7 +12,7 @@ export = {
   async execute(message: Discord.Message, args: any, client: Discord.Client) {
     const embed = new MessageEmbed()
       .setTitle("Eval")
-      .setAuthor(message.author.username, message.author.avatarURL())
+      .setAuthor(message.author.username, `${message.author.avatarURL()}`)
       .setDescription("Loading...")
       .setColor(`${message.member?.displayHexColor}`);
 

@@ -12,7 +12,7 @@ export = {
     const embed = new MessageEmbed()
       .setTitle("Ping!")
       .setDescription("Pinging...")
-      .setAuthor(message.member?.displayName, message.author.avatarURL())
+      .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
       .setColor(`${message.member?.displayHexColor}`);
 
     message.channel.send(embed).then((msg) => {

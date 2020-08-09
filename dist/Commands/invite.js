@@ -16,12 +16,13 @@ module.exports = {
     description: "Get An Invite For The Server And The Bot",
     type: "Utility",
     execute(message, args, client) {
-        var _a, _b, _c;
+        var _a, _b, _c, _d;
         return __awaiter(this, void 0, void 0, function* () {
             var invite = yield ((_b = (_a = message.guild) === null || _a === void 0 ? void 0 : _a.systemChannel) === null || _b === void 0 ? void 0 : _b.createInvite());
             const embed = new discord_js_1.MessageEmbed()
                 .setTitle("Invite Links")
                 .setColor(`${(_c = message.member) === null || _c === void 0 ? void 0 : _c.displayHexColor}`)
+                .setAuthor((_d = message.member) === null || _d === void 0 ? void 0 : _d.displayName, `${message.author.avatarURL()}`)
                 .addFields([
                 {
                     name: "> Server Invite",

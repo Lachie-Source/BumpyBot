@@ -9,7 +9,7 @@ export = {
   type: "Utility",
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     const embed = new MessageEmbed()
-      .setAuthor(message.member?.displayName, message.author.avatarURL())
+      .setAuthor(message.member?.displayName, `${message.author.avatarURL()}`)
       .setColor(`${message.member?.displayHexColor}`)
       .setTitle("Information")
       .addFields([
