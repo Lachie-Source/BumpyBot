@@ -13,7 +13,7 @@ module.exports = {
     name: "invite",
     aliases: [],
     permissions: ["CREATE_INSTANT_INVITE"],
-    description: "Get An Invite For The Server And The Bot",
+    description: "Create An Invite For The Server And The Bot",
     type: "Utility",
     execute(message, args, client) {
         var _a, _b, _c, _d;
