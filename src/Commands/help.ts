@@ -77,9 +77,7 @@ export = {
                 name: "> Required Permissions",
                 value:
                   cmd.permissions.toString().length != 0
-                    ? cmd.permissions
-                        .map((command: any) => toTitleCase(command))
-                        .join(", ")
+                    ? cmd.permissions.join(", ")
                     : "None",
               },
               {
