@@ -31,4 +31,3 @@ class MultiPageEmbed {
     }
 }
 exports.MultiPageEmbed = MultiPageEmbed;
-//# sourceMappingURL=MultiPageEmbed.js.map

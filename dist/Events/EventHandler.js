@@ -7,4 +7,3 @@ module.exports = {
     ClientPingedMessage: Message_2.ClientPingedMessage,
     ClientDM: Message_3.ClientDM,
 };
-//# sourceMappingURL=EventHandler.js.map

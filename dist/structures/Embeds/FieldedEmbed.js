@@ -10,4 +10,3 @@ class FieldedEmbed extends discord_js_1.MessageEmbed {
     }
 }
 exports.FieldedEmbed = FieldedEmbed;
-//# sourceMappingURL=FieldedEmbed.js.map

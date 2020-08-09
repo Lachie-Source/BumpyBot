@@ -5,4 +5,3 @@ function clamp(num, min, max) {
     return num > max ? max : num < min ? min : num;
 }
 exports.clamp = clamp;
-//# sourceMappingURL=clamp.js.map

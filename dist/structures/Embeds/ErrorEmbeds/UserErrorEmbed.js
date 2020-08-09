@@ -10,4 +10,3 @@ class UserErrorEmbed extends discord_js_1.MessageEmbed {
     }
 }
 exports.UserErrorEmbed = UserErrorEmbed;
-//# sourceMappingURL=UserErrorEmbed.js.map

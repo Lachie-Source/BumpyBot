@@ -51,4 +51,3 @@ client.on("ready", () => {
     Appearance_1.Appearance(client);
 });
 client.login(token);
-//# sourceMappingURL=bot.js.map

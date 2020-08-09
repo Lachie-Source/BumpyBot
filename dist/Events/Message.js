@@ -104,4 +104,3 @@ function ClientDM(client) {
     });
 }
 exports.ClientDM = ClientDM;
-//# sourceMappingURL=Message.js.map

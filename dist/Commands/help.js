@@ -132,4 +132,3 @@ module.exports = {
         });
     },
 };
-//# sourceMappingURL=help.js.map

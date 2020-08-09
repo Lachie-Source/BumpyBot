@@ -28,4 +28,3 @@ module.exports = {
         message.channel.send(embed);
     },
 };
-//# sourceMappingURL=invite.js.map

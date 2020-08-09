@@ -37,4 +37,3 @@ module.exports = {
         message.channel.send(embed);
     },
 };
-//# sourceMappingURL=info.js.map
