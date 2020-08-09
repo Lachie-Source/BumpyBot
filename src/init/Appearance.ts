@@ -9,10 +9,8 @@ export function Appearance(client: Client) {
   );
 
   client.user?.setActivity({
-    name: `Over ${client.guilds.cache.size} Guilds, ${Math.round(
-      client.ws.ping
-    )}ms of Ping`,
+    name: `Over ${client.guilds.cache.size} Guilds`,
     type: "WATCHING",
-    url: "https://www.youtube.com/embed/B9skoofirpA?controls=0",
+    url: "https://www.youtube.com/watch?v=B9skoofirpA",
   });
 }

@@ -16,7 +16,7 @@ module.exports = {
             .addFields([
             {
                 name: "> How Can I Support BumpyBot?",
-                value: `\`You Can Support BumpyBot By "Starring" BumpyBot's [Github Repository](https://github.com/Lachie-Source/BumpyBot), Or You Can Contribute To The Project.\``,
+                value: `\`You Can Support BumpyBot By "Starring" BumpyBot's Github Repository, Or You Can Contribute To The Repository.\``,
             },
             {
                 name: "> Why BumpyBot?",
@@ -25,6 +25,10 @@ module.exports = {
             {
                 name: "> How Can I Add BumpyBot To My Server?",
                 value: `[Click Here!](https://discord.com/oauth2/authorize?client_id=741157412060528701&scope=bot&permissions=1543892215)`,
+            },
+            {
+                name: "> Yeh, I Can Help; But Where?",
+                value: `[Click Here!](https://github.com/Lachie-Source/BumpyBot)`,
             },
         ]);
         message.channel.send(embed);

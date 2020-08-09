@@ -92,7 +92,6 @@ export = {
                   cmd.needperms.toString().length != 0
                     ? cmd.needperms.join(", ")
                     : "None",
-                inline: true,
               },
               {
                 name: "> Description",
