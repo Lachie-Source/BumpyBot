@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "dist": "tsc -p .",
     "start": "node dist/bot.js",
-    "dev": "tsc -p . && npm start"
+    "dev": "npm run dist && npm start"
   },
   "repository": {
     "type": "git",
