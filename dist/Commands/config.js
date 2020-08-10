@@ -14,7 +14,7 @@ module.exports = {
     description: "Configure BumpyBot Just How You Like It",
     type: "Utility",
     needperms: ["SEND_MESSAGES", "EMBED_LINKS"],
-    usage: '(prefix)config <Prefix> [Value="b!"]',
+    usage: '(Prefix)config <Prefix> [Value="b!"]',
     async execute(message, args, client, database) {
         const prefix = (await node_fetch_1.default(`https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/prefix.json`).then((req) => req.json())) || "b!";
         if (!args[0]) {
@@ -58,6 +58,45 @@ module.exports = {
                     catch (e) {
                         message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(e));
                         return;
+                    }
+                }
+            }
+            else if (args[0] == "logs") {
+                if (!args[1]) {
+                    try {
+                        database.ref(`guilds/${message.guild.id}/config/log`).remove();
+                        embed = new SuccessEmbed_1.SuccessEmbed("Config", `${message.member.displayHexColor}`, {
+                            user: message.member.displayName,
+                            url: message.author.avatarURL(),
+                        }, "Successfully Removed The Log Channel");
+                    }
+                    catch (e) {
+                        message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(e));
+                        return;
+                    }
+                }
+                else {
+                    const channel = message.guild.channels.cache.get(args[1]) ||
+                        message.mentions.channels.get(args[1]);
+                    if (!channel) {
+                        // Invalid Channel
+                        new UserErrorEmbed_1.UserErrorEmbed("Please Suply A Valid Channel ID Or Channel Tag");
+                    }
+                    else {
+                        if (!args[1])
+                            args[1] = "No Reason Provided";
+                        try {
+                            database
+                                .ref(`guilds/${message.guild.id}/config/log`)
+                                .set(channel.id);
+                            message.channel.send(new SuccessEmbed_1.SuccessEmbed("Kick", `${message.member.displayHexColor}`, {
+                                user: message.member.displayName,
+                                url: message.author.avatarURL(),
+                            }, `Successfully Add The Log Channel <#${message.guild.channels.cache.get(channel.id).name}>`));
+                        }
+                        catch (e) {
+                            message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(e));
+                        }
                     }
                 }
             }
