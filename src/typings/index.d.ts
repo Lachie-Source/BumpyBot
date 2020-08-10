@@ -14,6 +14,13 @@ declare module "BumpyBot" {
     public color: number;
     public fields: EmbedField[];
   }
+  export class SucessEmbed extends MessageEmbed {
+    constructor(message: string, color: any, fields: EmbedField[] = []) {}
+    public message: string;
+    public color: number;
+    public description: string;
+    public fields: EmbedField[] = [];
+  }
   export class FieldedEmbed extends MessageEmbed {
     constructor(color: any, fields: EmbedField[] = []) {}
     public color: number;

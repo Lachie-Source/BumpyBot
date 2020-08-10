@@ -7,6 +7,7 @@ module.exports = {
     needperms: ["CREATE_INSTANT_INVITE", "SEND_MESSAGES", "EMBED_LINKS"],
     description: "Create An Invite For The Server And The Bot",
     type: "Utility",
+    usage: "(Prefix)invite",
     async execute(message, args, client) {
         var invite = await message.guild?.systemChannel?.createInvite();
         const embed = new discord_js_1.MessageEmbed()

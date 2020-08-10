@@ -4,7 +4,7 @@ import { CodeErrorEmbed } from "../structures/Embeds/ErrorEmbeds/CodeErrorEmbed"
 import { InformationEmbed } from "../structures/Embeds/InformationEmbed";
 import fetch from "node-fetch";
 
-export function CommandHandlerMessage(client: Discord.Client) {
+export function CommandHandlerMessage(client: Discord.Client, database: any) {
   client.on("message", async (message) => {
     const prefix =
       (await fetch(
@@ -47,7 +47,7 @@ export function CommandHandlerMessage(client: Discord.Client) {
     }
 
     try {
-      checkcmd.execute(message, args, client);
+      checkcmd.execute(message, args, client, database);
     } catch (e) {
       message.channel.send(new CodeErrorEmbed(e));
     }
@@ -66,6 +66,10 @@ export function ClientPingedMessage(client: Discord.Client) {
         new InformationEmbed(
           "BumpyBot",
           message.member?.displayColor,
+          {
+            user: message.member.displayName,
+            url: message.author.avatarURL(),
+          },
           [
             {
               name: "> Default Prefix",
@@ -87,11 +91,7 @@ export function ClientPingedMessage(client: Discord.Client) {
               value: `${prefix}info`,
               inline: true,
             },
-          ],
-          {
-            user: message.member.displayName,
-            url: message.author.avatarURL(),
-          }
+          ]
         )
       );
     }

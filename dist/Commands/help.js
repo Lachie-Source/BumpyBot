@@ -15,6 +15,7 @@ module.exports = {
         "EMBED_LINKS",
         "ADD_REACTIONS",
     ],
+    usage: `(Prefix)help [Command Name]`,
     execute(message, args, client) {
         var index = -1;
         const glossaryEmbed = new discord_js_1.MessageEmbed()
@@ -58,6 +59,11 @@ module.exports = {
                     {
                         name: "> Type",
                         value: titleCases_1.toTitleCase(cmd.type),
+                        inline: true,
+                    },
+                    {
+                        name: "> Usage",
+                        value: cmd.usage,
                         inline: true,
                     },
                     {

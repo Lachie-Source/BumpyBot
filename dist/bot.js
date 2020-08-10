@@ -27,24 +27,28 @@ const discord_js_1 = __importDefault(require("discord.js"));
 const Appearance_1 = require("./init/Appearance");
 const EventHandler_1 = __importDefault(require("./Events/EventHandler"));
 const CommandHandler_1 = require("./structures/CommandHandler");
+const database_1 = require("./structures/database");
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
 // Base Variables
 const client = new discord_js_1.default.Client();
 const token = process.env.token;
 // Handlers
-try {
-    //   Command Handler
-    CommandHandler_1.CommandHandler(client);
-    //   Event Handler
-    EventHandler_1.default.CommandHandlerMessage(client);
-    EventHandler_1.default.ClientPingedMessage(client);
-    EventHandler_1.default.ClientDM(client);
-    EventHandler_1.default.Logger(client);
+async function handler() {
+    try {
+        //   Command Handler
+        CommandHandler_1.CommandHandler(client);
+        //   Event Handler
+        EventHandler_1.default.CommandHandlerMessage(client, await database_1.database());
+        EventHandler_1.default.ClientPingedMessage(client);
+        EventHandler_1.default.ClientDM(client);
+        EventHandler_1.default.Logger(client);
+    }
+    catch (e) {
+        console.log(e);
+    }
 }
-catch (e) {
-    console.log(e);
-}
+handler();
 // Online
 client.on("ready", () => {
     console.log(`Bot has started, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);

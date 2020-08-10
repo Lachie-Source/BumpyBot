@@ -13,6 +13,10 @@ export = {
     const embed = new InformationEmbed(
       "Information",
       `${message.member?.displayHexColor}`,
+      {
+        user: message.member.displayName,
+        url: message.author.avatarURL(),
+      },
       [
         {
           name: "> How Can I Support BumpyBot?",
@@ -39,11 +43,7 @@ export = {
           value: "`Message Me To Start A Support Session`",
           inline: false,
         },
-      ],
-      {
-        user: message.member.displayName,
-        url: message.author.avatarURL(),
-      }
+      ]
     );
 
     message.channel.send(embed);

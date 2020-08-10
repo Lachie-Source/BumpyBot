@@ -3,7 +3,7 @@ import Discord from "discord.js";
 import { Appearance } from "./init/Appearance";
 import EventHandler from "./Events/EventHandler";
 import { CommandHandler } from "./structures/CommandHandler";
-
+import { database } from "./structures/database";
 import * as dotenv from "dotenv";
 
 dotenv.config();
@@ -13,17 +13,20 @@ const client = new Discord.Client();
 const token = process.env.token;
 
 // Handlers
-try {
-  //   Command Handler
-  CommandHandler(client);
-  //   Event Handler
-  EventHandler.CommandHandlerMessage(client);
-  EventHandler.ClientPingedMessage(client);
-  EventHandler.ClientDM(client);
-  EventHandler.Logger(client);
-} catch (e) {
-  console.log(e);
+async function handler() {
+  try {
+    //   Command Handler
+    CommandHandler(client);
+    //   Event Handler
+    EventHandler.CommandHandlerMessage(client, await database());
+    EventHandler.ClientPingedMessage(client);
+    EventHandler.ClientDM(client);
+    EventHandler.Logger(client);
+  } catch (e) {
+    console.log(e);
+  }
 }
+handler();
 
 // Online
 client.on("ready", () => {

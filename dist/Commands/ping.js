@@ -13,6 +13,7 @@ module.exports = {
     description: "Get The Client's Uptime And Latency",
     type: "Utility",
     needperms: ["SEND_MESSAGES", "MANAGE_MESSAGES", "EMBED_LINKS"],
+    usage: "(Prefix)ping",
     execute(message, args, client) {
         const embed = new discord_js_1.MessageEmbed()
             .setTitle("Ping!")
