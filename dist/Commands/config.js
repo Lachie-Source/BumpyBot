@@ -14,7 +14,7 @@ module.exports = {
     description: "Configure BumpyBot Just How You Like It",
     type: "Utility",
     needperms: ["SEND_MESSAGES", "EMBED_LINKS"],
-    usage: "WIP",
+    usage: '(prefix)config <Prefix> [Value="b!"]',
     async execute(message, args, client, database) {
         const prefix = (await node_fetch_1.default(`https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/prefix.json`).then((req) => req.json())) || "b!";
         if (!args[0]) {
@@ -40,7 +40,7 @@ module.exports = {
                         embed = new SuccessEmbed_1.SuccessEmbed("Config", `${message.member.displayHexColor}`, {
                             user: message.member.displayName,
                             url: message.author.avatarURL(),
-                        }, `Successfully Set The Prefix To "${args[1]}`);
+                        }, `Successfully Set The Prefix To "${args[1]}"`);
                     }
                     catch (e) {
                         message.channel.send(new CodeErrorEmbed_1.CodeErrorEmbed(e));

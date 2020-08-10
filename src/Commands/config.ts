@@ -3,7 +3,7 @@ import { InformationEmbed } from "../structures/Embeds/InformationEmbed";
 import fetch from "node-fetch";
 import { UserErrorEmbed } from "../structures/Embeds/ErrorEmbeds/UserErrorEmbed";
 import { SuccessEmbed } from "../structures/Embeds/SuccessEmbed";
-import { database } from "../structures/database";
+
 import { CodeErrorEmbed } from "../structures/Embeds/ErrorEmbeds/CodeErrorEmbed";
 export = {
   name: "config",
@@ -12,7 +12,7 @@ export = {
   description: "Configure BumpyBot Just How You Like It",
   type: "Utility",
   needperms: ["SEND_MESSAGES", "EMBED_LINKS"],
-  usage: "WIP",
+  usage: '(prefix)config <Prefix> [Value="b!"]',
   async execute(
     message: Discord.Message,
     args: string[],
