@@ -2,7 +2,7 @@ import Discord from "discord.js";
 import { CodeErrorEmbed } from "../structures/Embeds/ErrorEmbeds/CodeErrorEmbed";
 import { UserErrorEmbed } from "../structures/Embeds/ErrorEmbeds/UserErrorEmbed";
 import { SuccessEmbed } from "../structures/Embeds/SuccessEmbed";
-
+import fetch from "node-fetch";
 export = {
   name: "kick",
   aliases: [],
@@ -18,6 +18,10 @@ export = {
     database: any
   ) {
     if (args[0]) {
+      const data = await fetch(
+        `https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/log.json`
+      ).then((req) => req.text());
+
       const member =
         message.guild.members.cache.get(args[0]) ||
         message.mentions.users.get(args[0]);
@@ -37,6 +41,8 @@ export = {
             });
 
           message.guild.members.cache.get(member.id).kick();
+
+          message.guild.channels.cache.get(data).send("mmm");
 
           message.channel.send(
             new SuccessEmbed(

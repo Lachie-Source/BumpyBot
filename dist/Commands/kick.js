@@ -1,7 +1,11 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
 const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
 const SuccessEmbed_1 = require("../structures/Embeds/SuccessEmbed");
+const node_fetch_1 = __importDefault(require("node-fetch"));
 module.exports = {
     name: "kick",
     aliases: [],
@@ -12,6 +16,7 @@ module.exports = {
     usage: '(Prefix)kick <User ID | User Tag> [Reason="No Reason Provided"]',
     async execute(message, args, client, database) {
         if (args[0]) {
+            const data = await node_fetch_1.default(`https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/log.json`).then((req) => req.text());
             const member = message.guild.members.cache.get(args[0]) ||
                 message.mentions.users.get(args[0]);
             if (!member) {
@@ -30,6 +35,7 @@ module.exports = {
                         mod: message.author.id,
                     });
                     message.guild.members.cache.get(member.id).kick();
+                    message.guild.channels.cache.get(data).send("mmm");
                     message.channel.send(new SuccessEmbed_1.SuccessEmbed("Kick", `${message.member.displayHexColor}`, {
                         user: message.member.displayName,
                         url: message.author.avatarURL(),
