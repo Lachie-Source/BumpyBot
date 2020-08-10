@@ -20,9 +20,11 @@ try {
   EventHandler.CommandHandlerMessage(client);
   EventHandler.ClientPingedMessage(client);
   EventHandler.ClientDM(client);
+  EventHandler.Logger(client);
 } catch (e) {
   console.log(e);
 }
+
 // Online
 client.on("ready", () => {
   console.log(
