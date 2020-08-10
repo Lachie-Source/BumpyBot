@@ -19,4 +19,14 @@ declare module "BumpyBot" {
     public color: number;
     public fields: EmbedField[];
   }
+  interface command {
+    name: string;
+    aliases: string[];
+    permissions: string[];
+    description: string;
+    type: string;
+    needperms: string[];
+    usage: string;
+    execute: Function;
+  }
 }

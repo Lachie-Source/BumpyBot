@@ -15,6 +15,7 @@ export = {
     "EMBED_LINKS",
     "ADD_REACTIONS",
   ],
+  usage: `(Prefix)help [Command Name]`,
   execute(message: Discord.Message, args: string[], client: Discord.Client) {
     var index = -1;
 
@@ -77,6 +78,11 @@ export = {
               {
                 name: "> Type",
                 value: toTitleCase(cmd.type),
+                inline: true,
+              },
+              {
+                name: "> Usage",
+                value: cmd.usage,
                 inline: true,
               },
               {

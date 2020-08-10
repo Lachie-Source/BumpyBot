@@ -7,6 +7,7 @@ export = {
   needperms: ["CREATE_INSTANT_INVITE", "SEND_MESSAGES", "EMBED_LINKS"],
   description: "Create An Invite For The Server And The Bot",
   type: "Utility",
+  usage: "(Prefix)invite",
   async execute(
     message: Discord.Message,
     args: string[],

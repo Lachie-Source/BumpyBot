@@ -55,26 +55,44 @@ export function CommandHandlerMessage(client: Discord.Client) {
 }
 
 export function ClientPingedMessage(client: Discord.Client) {
-  client.on("message", (message) => {
+  client.on("message", async (message) => {
     if (message.content == `<@!${client.user?.id}>`) {
+      const prefix =
+        (await fetch(
+          `https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/prefix.json`
+        ).then((req) => req.json())) || "b!";
+
       message.channel.send(
-        new InformationEmbed("BumpyBot", message.member?.displayColor, [
+        new InformationEmbed(
+          "BumpyBot",
+          message.member?.displayColor,
+          [
+            {
+              name: "> Default Prefix",
+              value: "b!",
+              inline: true,
+            },
+            {
+              name: "> Prefix",
+              value: prefix,
+              inline: true,
+            },
+            {
+              name: "> All Commands",
+              value: `${prefix}help`,
+              inline: true,
+            },
+            {
+              name: "> Additional Information",
+              value: `${prefix}info`,
+              inline: true,
+            },
+          ],
           {
-            name: "> Prefix",
-            value: "b!",
-            inline: true,
-          },
-          {
-            name: "> All Commands",
-            value: "b!help",
-            inline: true,
-          },
-          {
-            name: "> Additional Information",
-            value: "b!info",
-            inline: true,
-          },
-        ])
+            user: message.member.displayName,
+            url: message.author.avatarURL(),
+          }
+        )
       );
     }
   });
