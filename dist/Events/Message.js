@@ -1,12 +1,17 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientDM = exports.ClientPingedMessage = exports.CommandHandlerMessage = void 0;
 const discord_js_1 = require("discord.js");
 const UserErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/UserErrorEmbed");
 const CodeErrorEmbed_1 = require("../structures/Embeds/ErrorEmbeds/CodeErrorEmbed");
 const InformationEmbed_1 = require("../structures/Embeds/InformationEmbed");
-function CommandHandlerMessage(client, prefix = "b!") {
-    client.on("message", (message) => {
+const node_fetch_1 = __importDefault(require("node-fetch"));
+function CommandHandlerMessage(client) {
+    client.on("message", async (message) => {
+        const prefix = (await node_fetch_1.default(`https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/prefix.json`).then((req) => req.json())) || "b!";
         if (message.channel.type == "dm")
             return;
         // Handler

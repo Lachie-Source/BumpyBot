@@ -2,12 +2,15 @@ import Discord, { Message, MessageEmbed } from "discord.js";
 import { UserErrorEmbed } from "../structures/Embeds/ErrorEmbeds/UserErrorEmbed";
 import { CodeErrorEmbed } from "../structures/Embeds/ErrorEmbeds/CodeErrorEmbed";
 import { InformationEmbed } from "../structures/Embeds/InformationEmbed";
+import fetch from "node-fetch";
 
-export function CommandHandlerMessage(
-  client: Discord.Client,
-  prefix: string = "b!"
-) {
-  client.on("message", (message) => {
+export function CommandHandlerMessage(client: Discord.Client) {
+  client.on("message", async (message) => {
+    const prefix =
+      (await fetch(
+        `https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/prefix.json`
+      ).then((req) => req.json())) || "b!";
+
     if (message.channel.type == "dm") return;
     // Handler
     if (!message.content.toLowerCase().startsWith(prefix)) return;
