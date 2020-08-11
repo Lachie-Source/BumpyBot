@@ -28,8 +28,10 @@ class MultiPageEmbed {
         this.embed = this.embeds[this.page];
     }
     clamp() {
-        this.page = clamp_1.clamp(this.page, -1, this.client.commands.array().length);
-        this.embed = this.embeds[this.page + 1];
+        this.page = clamp_1.clamp(this.page, 0, this.client.commands
+            .filter((cmd) => !cmd.permissions.includes("DEV"))
+            .array().length);
+        this.embed = this.embeds[this.page];
     }
 }
 exports.MultiPageEmbed = MultiPageEmbed;

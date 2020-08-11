@@ -35,7 +35,13 @@ export class MultiPageEmbed {
   }
 
   clamp() {
-    this.page = clamp(this.page, -1, this.client.commands.array().length);
-    this.embed = this.embeds[this.page + 1];
+    this.page = clamp(
+      this.page,
+      0,
+      this.client.commands
+        .filter((cmd: any) => !cmd.permissions.includes("DEV"))
+        .array().length
+    );
+    this.embed = this.embeds[this.page];
   }
 }
