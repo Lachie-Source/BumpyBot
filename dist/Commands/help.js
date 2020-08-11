@@ -84,7 +84,7 @@ module.exports = {
                     },
                 ]);
             }),
-        ]);
+        ], client);
         if (args[0]) {
             const checkcmd = client.commands
                 .filter((cmd) => !cmd.permissions.includes("DEV"))

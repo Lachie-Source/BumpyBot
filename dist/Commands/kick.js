@@ -18,10 +18,11 @@ module.exports = {
         if (args[0]) {
             const data = await node_fetch_1.default(`https://bumpybot-discord.firebaseio.com/guilds/${message.guild.id}/config/log.json`).then((req) => req.text());
             const member = message.guild.members.cache.get(args[0]) ||
-                message.mentions.users.get(args[0]);
+                message.mentions.users.first();
             if (!member) {
                 // Invalid Member
-                new UserErrorEmbed_1.UserErrorEmbed("Please Suply A Valid User ID Or User Tag");
+                message.channel.send(new UserErrorEmbed_1.UserErrorEmbed("Please Suply A Valid User ID Or User Tag"));
+                return;
             }
             else {
                 if (!args[1])
@@ -35,7 +36,6 @@ module.exports = {
                         mod: message.author.id,
                     });
                     message.guild.members.cache.get(member.id).kick();
-                    message.guild.channels.cache.get(data).send("mmm");
                     message.channel.send(new SuccessEmbed_1.SuccessEmbed("Kick", `${message.member.displayHexColor}`, {
                         user: message.member.displayName,
                         url: message.author.avatarURL(),

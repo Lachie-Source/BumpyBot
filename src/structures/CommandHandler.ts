@@ -5,6 +5,7 @@ import Invite from "../Commands/invite";
 import Help from "../Commands/help";
 import Info from "../Commands/info";
 import Config from "../Commands/config";
+import Kick from "../Commands/kick";
 
 export function CommandHandler(client: Discord.Client) {
   client.commands = new Discord.Collection();
@@ -15,4 +16,5 @@ export function CommandHandler(client: Discord.Client) {
   client.commands.set("help", Help);
   client.commands.set("info", Info);
   client.commands.set("config", Config);
+  client.commands.set("kick", Kick);
 }

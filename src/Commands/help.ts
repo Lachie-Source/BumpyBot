@@ -37,75 +37,78 @@ export = {
         );
       });
 
-    const embeds = new MultiPageEmbed([
-      glossaryEmbed,
-      ...client.commands
-        .filter((x: any) => !x.permissions.includes("DEV"))
-        .map((cmd: any) => {
-          index++;
-          return new MessageEmbed()
-            .setAuthor(
-              message.member?.displayName,
-              `${message.author.avatarURL()}`
-            )
-            .setFooter(
-              'React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page'
-            )
-            .setTitle(
-              `Help - Page ${index + 1}/${
-                client.commands
-                  .array()
-                  .filter((x: any) => !x.permissions.includes("DEV")).length
-              }`
-            )
-            .setColor(`${message.member?.displayHexColor}`)
-            .addFields([
-              {
-                name: "> Command",
-                value: toTitleCase(cmd.name),
-                inline: true,
-              },
-              {
-                name: "> Aliases",
-                value:
-                  cmd.aliases.toString().length != 0
-                    ? cmd.aliases
-                        .map((command: any) => toTitleCase(command))
-                        .join(", ")
-                    : "None",
-                inline: true,
-              },
-              {
-                name: "> Type",
-                value: toTitleCase(cmd.type),
-                inline: true,
-              },
-              {
-                name: "> Usage",
-                value: cmd.usage,
-                inline: true,
-              },
-              {
-                name: "> Required Permissions",
-                value:
-                  cmd.permissions.toString().length != 0
-                    ? cmd.permissions.join(", ")
-                    : "None",
-              },
-              {
-                name: "> Bot's Required Permissions",
-                value:
-                  cmd.needperms.toString().length != 0
-                    ? cmd.needperms.join(", ")
-                    : "None",
-              },
-              {
-                name: "> Description",
-                value: cmd.description,
-              },
-            ]);
-        }),
-    ]);
+    const embeds = new MultiPageEmbed(
+      [
+        glossaryEmbed,
+        ...client.commands
+          .filter((x: any) => !x.permissions.includes("DEV"))
+          .map((cmd: any) => {
+            index++;
+            return new MessageEmbed()
+              .setAuthor(
+                message.member?.displayName,
+                `${message.author.avatarURL()}`
+              )
+              .setFooter(
+                'React With "⏩" To Turn A Page, React With "⏪" To Go Back A Page'
+              )
+              .setTitle(
+                `Help - Page ${index + 1}/${
+                  client.commands
+                    .array()
+                    .filter((x: any) => !x.permissions.includes("DEV")).length
+                }`
+              )
+              .setColor(`${message.member?.displayHexColor}`)
+              .addFields([
+                {
+                  name: "> Command",
+                  value: toTitleCase(cmd.name),
+                  inline: true,
+                },
+                {
+                  name: "> Aliases",
+                  value:
+                    cmd.aliases.toString().length != 0
+                      ? cmd.aliases
+                          .map((command: any) => toTitleCase(command))
+                          .join(", ")
+                      : "None",
+                  inline: true,
+                },
+                {
+                  name: "> Type",
+                  value: toTitleCase(cmd.type),
+                  inline: true,
+                },
+                {
+                  name: "> Usage",
+                  value: cmd.usage,
+                  inline: true,
+                },
+                {
+                  name: "> Required Permissions",
+                  value:
+                    cmd.permissions.toString().length != 0
+                      ? cmd.permissions.join(", ")
+                      : "None",
+                },
+                {
+                  name: "> Bot's Required Permissions",
+                  value:
+                    cmd.needperms.toString().length != 0
+                      ? cmd.needperms.join(", ")
+                      : "None",
+                },
+                {
+                  name: "> Description",
+                  value: cmd.description,
+                },
+              ]);
+          }),
+      ],
+      client
+    );
 
     if (args[0]) {
       const checkcmd = client.commands

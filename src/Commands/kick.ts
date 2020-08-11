@@ -24,10 +24,14 @@ export = {
 
       const member =
         message.guild.members.cache.get(args[0]) ||
-        message.mentions.users.get(args[0]);
+        message.mentions.users.first();
       if (!member) {
         // Invalid Member
-        new UserErrorEmbed("Please Suply A Valid User ID Or User Tag");
+
+        message.channel.send(
+          new UserErrorEmbed("Please Suply A Valid User ID Or User Tag")
+        );
+        return;
       } else {
         if (!args[1]) args[1] = "No Reason Provided";
 
@@ -41,8 +45,6 @@ export = {
             });
 
           message.guild.members.cache.get(member.id).kick();
-
-          message.guild.channels.cache.get(data).send("mmm");
 
           message.channel.send(
             new SuccessEmbed(

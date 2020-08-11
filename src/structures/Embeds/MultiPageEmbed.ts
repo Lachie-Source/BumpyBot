@@ -5,10 +5,13 @@ export class MultiPageEmbed {
   embeds: MessageEmbed[];
   page: number;
   embed: MessageEmbed;
-  constructor(embeds: MessageEmbed[]) {
+  client: Discord.Client;
+
+  constructor(embeds: MessageEmbed[], client: Discord.Client) {
     this.embeds = embeds;
     this.page = 0;
     this.embed = this.embeds[this.page];
+    this.client = client;
   }
 
   next() {
@@ -24,12 +27,15 @@ export class MultiPageEmbed {
   MessageEmbed() {
     return this.embed;
   }
-  clamp() {
-    this.page = clamp(this.page, 0, 5);
+
+  setPage(n: number) {
+    this.page = n;
+    this.clamp();
     this.embed = this.embeds[this.page];
   }
-  setPage(n: number) {
-    this.page = clamp(n, 0, 5);
-    this.embed = this.embeds[this.page];
+
+  clamp() {
+    this.page = clamp(this.page, -1, this.client.commands.array().length);
+    this.embed = this.embeds[this.page + 1];
   }
 }

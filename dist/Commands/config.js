@@ -77,7 +77,7 @@ module.exports = {
                 }
                 else {
                     const channel = message.guild.channels.cache.get(args[1]) ||
-                        message.mentions.channels.get(args[1]);
+                        message.mentions.channels.first();
                     if (!channel) {
                         // Invalid Channel
                         new UserErrorEmbed_1.UserErrorEmbed("Please Suply A Valid Channel ID Or Channel Tag");
